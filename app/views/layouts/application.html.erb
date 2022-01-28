@@ -9,40 +9,44 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="header">
+  <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <nav class="nav navbar-left">
-          <span class="title">Bookers</span>
         </nav>
-        <nav class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-          <li class="">
-            <%= link_to user_path(current_user), class: "btn btn-link" do %>
-            <span class="glyphicon glyphicon-home" aria-hidden="true"> Home</span>
-            <% end %>
-          </li>
-          <li class="">
-            <%= link_to users_path, class: "btn btn-link" do %>
-            <span class="glyphicon glyphicon-user" aria-hidden="true"> Users</span>
-          <% end %>
-          </li>
-          <%= link_to books_path, class: "btn btn-link" do %>
-            <span class="glyphicon glyphicon-book" aria-hidden="true"> Books</span>
-            <% end %>
-          </li>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+
+        <% if user_signed_in? %>
+          <li><%= link_to "",user_path(current_user.id),class:"glyphicon glyphicon-home" %></li>
+          <li><%= link_to "","/users",class:"glyphicon glyphicon-user" %></li>
+          <li><%= link_to "","/books",class:"glyphicon glyphicon-book" %></li>
+          <li><%= link_to "",destroy_user_session_path,class:"glyphicon glyphicon-log-out",method: :delete %></li>
+
+        <% else %>
+          <li><%= link_to"Home",root_path, class:"glyphicon glyphicon-home" %></li>
+          <li><%= link_to"About",home_about_path,class:"glyphicon glyphicon-link" %></li>
+          <li><%= link_to"Sign up","/users/sign_up",class:"glyphicon glyphicon-edit sign_up" %></li>
+          <li><%= link_to"login","/users/sign_in",class:"glyphicon glyphicon-log-in" %></li>
+        <% end %>
+          </ul>
         </nav>
       </div>
     </header>
 
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-
-    <% end %>
+    <div class="body">
+      <% if flash[:notice] %>
+        <div class="flash">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+    </div>
 
     <%= yield %>
+
+
+     <footer>
+       <p class="text-center"> CopyRight Infratop.inc</p>
+    </footer>
   </body>
-  <p></p>CopyRight Infratop.inc</p>
 </html>
