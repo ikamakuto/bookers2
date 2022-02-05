@@ -1,10 +1,49 @@
-<h1>User info</h1>
-<%= form_with model: @post_image, local:true do |f| %>
- <h4>Name</h4>
-  <%= f.text_field :name %>
-  <h4>Image</h4>
-  <%= f.attachment_field :image %>
-  <h4>Introduction</h4>
-  <%= f.text_area :introduction %>
-  <%= f.submit 'Update User' %>
+
+
+<div class="box">
+  <div class="col-xs-3">
+    <h2>User info</h2>
+
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", format: 'no_image.jpg' %>
+  <h4>Name</h4>
+  <%= @user.name %>
+  <%= image_tag('sample-author1.jpg') %>
+  <h4>introduction</h4>
+  <%= @user.introduction %>
+  <%= link_to"Update User",edit_user_path(@user.id),class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+
+
+
+<%= form_for(@book, url:books_path) do |f| %>
+<h2>New book</h2>
+<h4>Title</h4>
+<%= f.text_field :title,class: "col-xs-12" %>
+<h4>Opinion</h4>
+<%= f.text_field :body,class: "col-xs-12" %>
+<nav>
+  <%= f.submit 'Creat Book',class: "col-xs-12 btn btn-primary" %>
+</nav>
 <% end %>
+</div>
+
+<div class= "col-xs-9">
+  <h2>Books</h2>
+  <table class='table table-hover table-inverse'>
+    <tr>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+
+    <% @books.each do |book| %>
+    <%= link_to user_path(@user.id) do %>
+    <tr>
+      <td><%= attachment_image_tag @user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg",size:'20×20',format: 'no_image.jpg' %></td>
+    <% end %>
+    <td><%=link_to book.title, book_path(book.id) %></td>
+    <td><%= book.body %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+</div>
