@@ -15,10 +15,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @books = Book.all
     @book = Book.new
     @user = current_user
-    render "books/index"
   end
 
   def new
@@ -52,9 +50,6 @@ class UsersController < ApplicationController
   end
 
   private
-  def book_params
-    params.require(:book).permit(:title, :body)
-  end
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)

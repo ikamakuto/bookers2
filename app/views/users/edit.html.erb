@@ -1,19 +1,26 @@
-<% if @user.errors %>
- <ul>
+<% if @user.errors.any? %>
    <% @user.errors.full_messages.each do |message| %>
-   <li><%= message %></li>
+    <%= message %>
    <% end %>
- </ul>
 <% end %>
 
-<h2>User info</h2>
 <%= form_with model:@user, local:true do |f| %>
-  <h4>Name</h4>
-  <%= f.text_field :name %>
-  <h4>Image</h4>
-  <%= f.attachment_field @user, :profileimage %>
-  <%= attachment_image_tag @user, :profileimage, :fill, 60, 60, fallback: "no_image.jpg"%>
-  <h4>Introduction</h4>
-  <%= f.text_area :introduction %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      
+<h2>User info</h2>
+  <p>Name</br>
+  <%= f.text_field :name %></p>
+  <p>Image</br>
+  <input value="{}" data-reference="04ce3aa4868e4fd35ee672ad3b8e5818" type="hidden" name="user[profile_image]" /><input class="form-control-file user_image" data-reference="04ce3aa4868e4fd35ee672ad3b8e5818" include_hidden="false" type="file" name="user[profile_image]" id="user_profile_image" />
+
+  <p>Introduction</br>
+  <%= f.text_area :introduction %></p>
   <%= f.submit "Update User" %>
+  
 <% end %>
+<footer>
+  <div class='container mt-5'>
+    <div class='row'>
+      <div class='mx-auto'>
