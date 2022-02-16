@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :ensure_current_user, only: [:edit, :update, :destroy]
 
   def create
     @user = current_user
@@ -49,7 +50,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
 
     else
-        @book = Book.all
+        @books = Book.all
         flash[:notice] = 'errors prohibited this obj from being saved:'
         render "edit"
     end
@@ -75,8 +76,8 @@ class BooksController < ApplicationController
     def ensure_current_user
     @book = Book.find(params[:id])
       if @book.user_id != current_user.id
-      redirect_to books_path
+      redirect_to (books_path) unless @user == current_user
+        
       end
     end
-
 end

@@ -19,17 +19,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-        
+
         <% if user_signed_in? %>
           <li><%= link_to " Home", user_path(current_user), class:"fas fa-home nav-link text-light" %></a></li>
           <li><%= link_to " Users","/users", class:"fas fa-users nav-link text-light" %></a></li>
           <li><%= link_to " Books","/books", class:"fas fa-book-open nav-link text-light" %></a></li>
-          <li><%= link_to " log out",destroy_user_session_path, class:"fas fa-sign-out-alt nav-link text-light", method: :delete %></a></li>
+          <li><%= link_to " Log out",destroy_user_session_path, class:"fas fa-sign-out-alt nav-link text-light", method: :delete %></a></li>
         </ul>
       </div>
     </div>
   </nav>
-      
+
 
         <% else %>
           <li><%= link_to " Home",root_path, class:"fas fa-home nav-link text-light" %></a></li>
@@ -51,9 +51,9 @@
     </div>
     <table class='table table-hover table-inverse'></table>
     <div class='col-md-8 offset-md-1'></div>
-
+    
     <%= yield %>
-
+    
   <footer>
   <div class='container mt-5'>
     <div class='row'>

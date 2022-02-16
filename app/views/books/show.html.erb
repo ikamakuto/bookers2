@@ -12,7 +12,7 @@
     <div class= "col-md-3">
       <h2>User info</h2>
   <table class="table">
-    <tr><%= attachment_image_tag @book.user, :profileimage, :fill, 100, 100, fallback: "no_image.jpg", format: 'no_image.jpg' %></tr>
+    <tr><%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", format: 'no_image.jpg' %></tr>
      <tr>
       <th>name</th>
       <th><%= @book.user.name %></th>
@@ -40,17 +40,17 @@
     </div>
   <% end %>
 
-
+    
   <div class='col-md-8 offset-md-1'>
     <h2>Book detail</h2>
       <table class='table'>
         <tbody>
         <tr>
         <td><%= link_to user_path(@book.user_id) do %>
-        <%= attachment_image_tag @book.user, :profileimage, fallback: "no_image.jpg", size:'40x40', format: 'no_image.jpg' %></br>
+        <%= attachment_image_tag @book.user, :profile_image, fallback: "no_image.jpg", size:'40x40', format: 'jpeg' %></br>
         <%= @book.user.name %>
        </td>
-        
+
          <% end %>
 
        <td><%= link_to @book.title, book_path(@book.id) %></td>
