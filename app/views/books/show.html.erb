@@ -24,7 +24,7 @@
   </table>
 
   <div class='row'>
-    <%= link_to"",edit_user_path(@book.id),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
+    <%= link_to"",edit_user_path(@book.user.id),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
   </div>
 
   <%= form_for(@book_new, url: books_path) do |f| %>
@@ -40,7 +40,7 @@
     </div>
   <% end %>
 
-    
+
   <div class='col-md-8 offset-md-1'>
     <h2>Book detail</h2>
       <table class='table'>

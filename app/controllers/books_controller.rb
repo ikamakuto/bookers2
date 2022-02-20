@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  before_action :ensure_current_user, only: [:edit, :update, :destroy]
 
   def create
     @user = current_user
@@ -33,7 +32,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.new
     @book = Book.find(params[:id])
     if @book.user == current_user
       render "edit"
